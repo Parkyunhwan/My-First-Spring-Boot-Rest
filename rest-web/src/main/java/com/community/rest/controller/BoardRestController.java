@@ -21,7 +21,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/api/boards") // 복수형
-@Log
+//@Log
 public class BoardRestController {
 
     private BoardRepository boardRepository;
@@ -49,7 +49,7 @@ public class BoardRestController {
     // 커뮤니티 게시판 글 추가를 위한 메서드 추가
     @PostMapping
     public ResponseEntity<?> postBoard(@RequestBody Board board) {
-        log.info("gogo post");
+        //log.info("gogo post");
         board.setCreatedDateNow(); // 서버 시간으로 생성된 날짜 저장
         boardRepository.save(board);
         return new ResponseEntity<>("{}", HttpStatus.CREATED); // 바디에는 아무것도 반환하지 않고 상태값은 CREATED를 반환
@@ -58,7 +58,7 @@ public class BoardRestController {
     // 커뮤니티 게시판 글 수정을 위한 메서드 추가
     @PutMapping("/{idx}")
     public ResponseEntity<?> putBoard(@PathVariable("idx") Long idx, @RequestBody Board board) {
-        log.info("gogo put");
+        //log.info("gogo put");
         // lazy initialize exception 발생으로 코드를 getOne(idx)에서 살짝 수정
         Optional<Board> persistBoard = boardRepository.findById(idx);// getOne(idx);
         persistBoard.get().update(board); // createdTime은 건드리지 않고 모든 필드 수정.
@@ -68,7 +68,7 @@ public class BoardRestController {
 
     @DeleteMapping("/{idx}")
     public ResponseEntity<?> deleteBoard(@PathVariable("idx") Long idx) {
-        log.info("gogo delete");
+        //log.info("gogo delete");
         boardRepository.deleteById(idx);
         return new ResponseEntity<>("{}", HttpStatus.OK);
     }

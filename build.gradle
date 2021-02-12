@@ -35,7 +35,8 @@ subprojects {
     //4. 프로젝트 내에 사용할 라이브러리의 의존성을 설정
     //메인 부트 버전에 맞게 호환성을 가져오기 위해 디폴트 버전 사용
     dependencies {
-        testCompile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.1'
+        //testCompile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.1'
+        compile('org.springframework.data:spring-data-rest-hal-browser')
         compile('org.springframework.boot:spring-boot-starter-data-jpa')
         compile('org.springframework.boot:spring-boot-starter-security')
         compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')

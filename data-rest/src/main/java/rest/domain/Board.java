@@ -1,10 +1,11 @@
-package com.community.rest.domain;
+package rest.domain;
 
-import com.community.rest.enums.BoardType;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import rest.domain.enums.BoardType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -58,6 +59,9 @@ public class Board implements Serializable {
     public void setCreatedDateNow() {
         this.createdDate = LocalDateTime.now();
     }
+    public void setUpdatedDateNow() {
+        this.updatedDate = LocalDateTime.now();
+    }
 
     public void update (Board board){
         this.title = board.getTitle();
@@ -66,5 +70,6 @@ public class Board implements Serializable {
         this.boardType = board.getBoardType();
         this.updatedDate = LocalDateTime.now();
     }
+
 
 }
